@@ -8,3 +8,4 @@
 
 ## The following files contain private values
 */res/values/p_*.xml
+GreenDroid/target/*
