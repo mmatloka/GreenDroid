@@ -115,7 +115,7 @@ public class PageIndicator extends View {
         mActiveDot = 0;
         mDotSpacing = 0;
         mDotType = DotType.SINGLE;
-        
+
         mExtraState = onCreateDrawableState(1);
         mergeDrawableStates(mExtraState, SELECTED_STATE_SET);
     }
@@ -211,7 +211,12 @@ public class PageIndicator extends View {
      */
     public void setDotDrawable(Drawable dotDrawable) {
         if (dotDrawable != mDotDrawable) {
+            if (mDotDrawable != null) {
+                mDotDrawable.setCallback(null);
+            }
+
             mDotDrawable = dotDrawable;
+
             if (dotDrawable != null) {
 
                 if (dotDrawable.getIntrinsicHeight() == -1 || dotDrawable.getIntrinsicWidth() == -1) {
@@ -376,7 +381,12 @@ public class PageIndicator extends View {
                     if (mDotType == DotType.MULTIPLE || i == mActiveDot) {
                         state = mExtraState;
                     }
+                    // HACK Cyril: The following code prevent the setState call
+                    // from invalidating the View again (which will result in
+                    // calling onDraw over and over again).
+                    d.setCallback(null);
                     d.setState(state);
+                    d.setCallback(this);
                 }
                 d.draw(canvas);
                 canvas.translate(mDotSpacing + d.getIntrinsicWidth(), 0);
