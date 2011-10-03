@@ -9,8 +9,9 @@
 	<name>android</name>
 
 	<properties>
-		<android.sdk.path><!-- path --></android.sdk.path>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>com.google.android</groupId>
@@ -31,9 +32,9 @@
 		<plugins>
 			<plugin>
 				<groupId>com.jayway.maven.plugins.android.generation2</groupId>
-				<artifactId>maven-android-plugin</artifactId>
+				<artifactId>android-maven-plugin</artifactId>
 				<extensions>true</extensions>
-				<version>3.0.0-alpha-7</version>
+				<version>3.0.0-alpha-11</version>
 				<configuration>
 					<sdk>
 						<platform>4</platform>
