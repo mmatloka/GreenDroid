@@ -1,11 +1,6 @@
-## Exclude file used by compilators, interpreters, etc.
-*/bin/*
-*/gen/*
-*.pyc
 
-## Exclude Mac OS X files
-*.DS_Store
-
-## The following files contain private values
-*/res/values/p_*.xml
-GreenDroid/target/*
+*.class
+.*
+target/
+gen/
+bin/
